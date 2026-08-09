@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maya AI — Ambient Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050508;--surface:#0f0f14;--card:#16161e;--text:#f0f0f5;--muted:#6b6b78;--accent:#00e5c9;--accent2:#7c5cff;--border:rgba(255,255,255,0.05)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(5,5,8,0.7);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{font-size:1.3rem;font-weight:800;letter-spacing:-1px;background:linear-gradient(135deg,#fff 30%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:2rem}.nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;transition:.2s}.nav-links a:hover{color:var(--text)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 4rem;background:radial-gradient(ellipse at 50% 0%,rgba(0,229,201,0.07) 0%,transparent 60%)}
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem 1rem;background:rgba(0,229,201,0.08);border:1px solid rgba(0,229,201,0.2);border-radius:100px;font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:1.5rem}
+.badge::before{content:'';width:5px;height:5px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-2.5px;max-width:950px;margin-bottom:1.2rem}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero>p{color:var(--muted);font-size:1.15rem;max-width:600px;margin-bottom:2rem}
+.cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn{padding:.85rem 1.8rem;border-radius:12px;font-weight:600;font-size:.9rem;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.btn-pri{background:var(--accent);color:#000}.btn-pri:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,229,201,.25)}
+.btn-sec{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-sec:hover{border-color:var(--accent);color:var(--accent)}
+section{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:3.5rem}.sec-head h2{font-size:2.2rem;font-weight:700;margin-bottom:.6rem}.sec-head p{color:var(--muted);max-width:500px;margin:0 auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:768px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:.3s}.card:hover{border-color:rgba(0,229,201,.15);transform:translateY(-3px)}
+.card .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem}
+.card h3{font-size:1.15rem;margin-bottom:.5rem}.card p{color:var(--muted);font-size:.9rem}
+.eco{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+@media(max-width:768px){.eco{grid-template-columns:1fr}}
+.eco-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden}
+.eco-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:.5}
+.eco-card h4{font-size:1.1rem;margin-bottom:.4rem}.eco-card p{color:var(--muted);font-size:.85rem}.eco-card .tag{position:absolute;top:1rem;right:1rem;font-size:.7rem;padding:.2rem .6rem;background:rgba(255,255,255,.05);border-radius:6px;color:var(--muted)}
+.arch{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2.5rem}
+.arch-flow{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem}
+.arch-node{flex:1;min-width:160px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.2rem;text-align:center}
+.arch-node .dot{width:10px;height:10px;border-radius:50%;margin:0 auto .6rem}
+.arch-node strong{display:block;font-size:.85rem;margin-bottom:.2rem}.arch-node span{color:var(--muted);font-size:.75rem}
+.arch-arrow{color:var(--muted);font-size:1.3rem}
+.arch-note{text-align:center;color:var(--muted);font-size:.85rem;font-style:italic}
+.patent{background:linear-gradient(135deg,rgba(0,229,201,.06),rgba(124,92,255,.06));border:1px solid rgba(0,229,201,.12);border-radius:20px;padding:3rem;text-align:center}
+.patent h3{font-size:1.4rem;margin-bottom:.8rem}.patent p{color:var(--muted);max-width:650px;margin:0 auto 1.2rem;font-size:.95rem}
+.patent-badge{display:inline-block;padding:.5rem 1.2rem;background:rgba(0,229,201,.12);color:var(--accent);border-radius:100px;font-size:.8rem;font-weight:600}
+.contact{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:3rem 2rem;text-align:center}
+.contact h2{font-size:1.8rem;margin-bottom:.6rem}.contact>p{color:var(--muted);margin-bottom:1.5rem}
+.contact a{color:var(--accent);font-size:1.2rem;font-weight:600;text-decoration:none}.contact a:hover{text-decoration:underline}
+footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border)}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s ease}.reveal.vis{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<nav><div class="logo">Maya AI</div><div class="nav-links"><a href="#tech">Technology</a><a href="#ecosystem">Ecosystem</a><a href="#patent">Patent</a><a href="#contact">Contact</a></div></nav>
+
+<section class="hero">
+<div class="badge">Patent Pending — UPRP 2026</div>
+<h1>Ambient AI That <span>Understands Intent</span></h1>
+<p>We eliminate static wake-words by fusing presence, gaze, acoustic, and biometric signals into a single Weighted Activation Intent score.</p>
+<div class="cta">
+<a href="#tech" class="btn btn-pri">Explore Technology</a>
+<a href="#contact" class="btn btn-sec">Contact Us</a>
+</div>
+</section>
+
+<section id="tech">
+<div class="sec-head reveal"><h2>The Wake-Word Problem</h2><p>Legacy voice assistants force you to shout a keyword. We fixed that.</p></div>
+<div class="grid2">
+<div class="card reveal"><div class="icon" style="background:rgba(255,80,80,.1)">❌</div><h3>Static Wake-Words</h3><p>Require explicit phrases, fail in noise, cannot distinguish speakers, and continuously stream audio to the cloud.</p></div>
+<div class="card reveal"><div class="icon" style="background:rgba(0,229,201,.1)">✓</div><h3>WIA Engine</h3><p>Determines user intent through real-time multi-channel fusion — zero wake-words, edge-first privacy, deterministic arbitration.</p></div>
+</div>
+</section>
+
+<section id="ecosystem">
+<div class="sec-head reveal"><h2>Product Ecosystem</h2><p>One architecture, four products.</p></div>
+<div class="eco">
+<div class="eco-card reveal"><span class="tag">R&D</span><h4>🧠 Maya Brainstorm</h4><p>Multi-agent collaborative sandbox for AI reasoning and creative problem solving.</p></div>
+<div class="eco-card reveal"><span class="tag">Client</span><h4>🎙️ 8bits AI (Elli)</h4><p>Personal ambient voice assistant. No wake-word, biometric identity, full privacy.</p></div>
+<div class="eco-card reveal"><span class="tag">Server</span><h4>∞ 7F800000 Compute</h4><p>Distributed inference cluster powered by NVIDIA GB10. Scales from 1 to N nodes.</p></div>
+<div class="eco-card reveal"><span class="tag">Enterprise</span><h4>🏢 Maya Enterprise</h4><p>Multi-zone deployment for smart buildings, offices, and industrial environments.</p></div>
+</div>
+</section>
+
+<section>
+<div class="sec-head reveal"><h2>Edge-to-Cloud Architecture</h2><p>Real-time inference at the edge. Heavy reasoning in the cluster.</p></div>
+<div class="arch reveal">
+<div class="arch-flow">
+<div class="arch-node"><div class="dot" style="background:#00a8ff"></div><strong>Edge Node</strong><span>x86 · 64GB · Local AI</span></div>
+<div class="arch-arrow">→</div>
+<div class="arch-node"><div class="dot" style="background:var(--accent)"></div><strong>7F800000 Cluster</strong><span>NVIDIA GB10 · RoCE · LLM</span></div>
+<div class="arch-arrow">→</div>
+<div class="arch-node"><div class="dot" style="background:var(--accent2)"></div><strong>Response</strong><span>TTS · &lt;200ms · Personal</span></div>
+</div>
+<div class="arch-note">Each edge runs STT, biometrics, and gaze locally. Heavy reasoning is offloaded to the centralized GB10 cluster via deterministic spatial arbitration.</div>
+</div>
+</section>
+
+<section id="patent"><div class="patent reveal"><h3>📋 Patent-Pending Technology</h3><p>Our core Weighted Activation Intent (WIA) system is protected by a filed patent application with the Polish Patent Office (UPRP), establishing priority date in June 2026. The IP covers multi-channel signal fusion, spatial arbitration, and deterministic intent scoring for ambient voice interaction.</p><div class="patent-badge">UPRP Filing · June 2026 · Priority Date Established</div></div></section>
+
+<section id="contact"><div class="contact reveal"><h2>Let's Build the Future of Voice AI</h2><p>We are actively evaluating hardware partnerships and preparing for a commercial pilot in Q4 2026.</p><a href="mailto:hello@maya-ai.tech">hello@maya-ai.tech</a><br><br><p style="color:var(--muted);font-size:.85rem">Maya AI sp. z o.o. · Poland</p></div></section>
+
+<footer><p>© 2026 Maya AI sp. z o.o. All rights reserved. Patent pending. | maya-ai.tech · 8bitsai.com · 7f800000.com · mayabrainstorm.com</p></footer>
+
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})}));
+</script>
+</body>
+</html>
